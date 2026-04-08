@@ -1,0 +1,14 @@
+services:
+  py-lab:
+    image: localhost/py-lab-base:latest
+    network_mode: host  # Use host network to talk to LM Studio via localhost
+    volumes:
+      - .:/app:Z
+    env_file:
+      - .env       
+    tty: true
+    stdin_open: true
+
+  redis:
+    image: docker.io/library/redis:7-alpine
+    network_mode: host  # Must also be on host network to be found at 'localhost'
