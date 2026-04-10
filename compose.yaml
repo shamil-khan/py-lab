@@ -3,7 +3,7 @@ services:
     image: localhost/py-lab-base:latest
     network_mode: host  # Use host network to talk to LM Studio via localhost
     volumes:
-      - .:/app:Z
+      - .:/app:Z #z if SELinux is enabled, otherwise omit :Z, also try in bash chmod 644 <filename> on the files
     env_file:
       - .env       
     tty: true

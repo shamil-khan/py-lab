@@ -1,5 +1,6 @@
 import os
 from langchain_openai import ChatOpenAI
+from langchain_core.messages import HumanMessage
 
 # NOTE: Enable once LMS server is up and model is loaded
 # Use localhost because of network_mode: host
@@ -18,11 +19,13 @@ from langchain_openai import ChatOpenAI
 #     print(f"Connection Error: {e}")
 
 # Initialize OpenAI (uses OPENAI_API_KEY from .env)
-gpt4 = ChatOpenAI(model="gpt-5-nano")
+model = ChatOpenAI(model="gpt-5-nano")
 
 print("--- Testing GPT-5-nano ---")
 try:
-    response = gpt4.invoke("Write a python script of hello-world")
+    # prompt = [HumanMessage("Write a python script of hello-world")]
+    prompt = [HumanMessage("generate 5 page long text file for testing RAG")]
+    response = model.invoke(prompt)
     print(response.content)
 except Exception as e:
     print(f"Connection Error: {e}")

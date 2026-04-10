@@ -1,0 +1,14 @@
+This is a plain text document intended for testing retrieval augmented generation (RAG) pipelines. It describes a synthetic but coherent collection of material designed to resemble a mix of topics that a real knowledge base might contain. The goal is to provide diverse content that helps test how a RAG system handles document retrieval, chunking, context stitching, and answer generation across different domains.
+
+RAG stands for retrieval augmented generation. In a typical setup, a user query is first used to retrieve relevant passages from a large corpus. The retrieved passages are then supplied to a language model along with the query, so the model can generate an answer that is grounded in the retrieved material. This approach helps mitigate issues with hallucination and improves factual accuracy when the knowledge base is large or rapidly changing.
+
+A few core concepts to keep in mind as you test RAG systems:
+
+- Embeddings and indexing: The retrieval step relies on a vector index of document chunks. Each chunk is converted to a fixed-size vector in some embedding space. Queries are similarly embedded, and a similarity search is performed to find the most relevant chunks.
+- Document chunking: Long documents must be split into smaller chunks that preserve meaning. Careful chunking helps ensure that key ideas remain coherent when reassembled by the reader.
+- Retrieval scope: The size of the retriever’s candidate set affects latency and quality. A larger candidate pool can improve recall but may require more processing time.
+- Context window: The model has a limit on how much text it can consider at once. When relevant chunks exceed that limit, you need a strategy to select the most informative subset or to perform multi-hop reasoning across several steps.
+- Evaluation: Common metrics include recall@k, precision@k, and F1 for factual questions. Human evaluation often complements automated metrics for more nuanced judgments about usefulness and grounding.
+
+The following pages provide a synthetic, multi-domain corpus you can use to test a RAG workflow. Each page constitutes a coherent block that can stand alone, but it is also designed to be combined with other pages when building a larger knowledge base.
+
